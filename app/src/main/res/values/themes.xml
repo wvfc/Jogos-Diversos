@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Tema base usado antes do Compose assumir o controle das cores.
+         O Compose aplica o Material 3 dinâmico/claro/escuro em tempo de execução. -->
+    <style name="Theme.JogueComigo" parent="android:Theme.Material.Light.NoActionBar" />
+</resources>
