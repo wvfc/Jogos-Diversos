@@ -14,9 +14,10 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Bolt
+import androidx.compose.material.icons.filled.EmojiEvents
 import androidx.compose.material.icons.filled.GridView
 import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material.icons.filled.EmojiEvents
+import androidx.compose.material.icons.filled.Tag
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -36,10 +37,11 @@ import androidx.compose.ui.unit.dp
  */
 @Composable
 fun HomeScreen(
-    onPlaySudoku: () -> Unit,
-    onPlayCheckers: () -> Unit,
-    onOpenProgress: () -> Unit,
-    onOpenSettings: () -> Unit,
+    onNavigateSudoku: () -> Unit,
+    onNavigateCheckers: () -> Unit,
+    onNavigateTicTacToe: () -> Unit,
+    onNavigateProgress: () -> Unit,
+    onNavigateSettings: () -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -67,14 +69,21 @@ fun HomeScreen(
             title = "Sudoku",
             subtitle = "Desafie sua lógica com tabuleiros válidos e dicas inteligentes.",
             icon = Icons.Filled.GridView,
-            onClick = onPlaySudoku,
+            onClick = onNavigateSudoku,
         )
         Spacer(Modifier.height(16.dp))
         GameCard(
             title = "Dama",
             subtitle = "Enfrente o motor Minimax e melhore sua estratégia.",
             icon = Icons.Filled.Bolt,
-            onClick = onPlayCheckers,
+            onClick = onNavigateCheckers,
+        )
+        Spacer(Modifier.height(16.dp))
+        GameCard(
+            title = "Jogo da Velha",
+            subtitle = "Desafie a máquina no clássico jogo de X e O.",
+            icon = Icons.Filled.Tag,
+            onClick = onNavigateTicTacToe,
         )
 
         Spacer(Modifier.height(24.dp))
@@ -84,7 +93,7 @@ fun HomeScreen(
             horizontalArrangement = Arrangement.spacedBy(12.dp),
         ) {
             OutlinedButton(
-                onClick = onOpenProgress,
+                onClick = onNavigateProgress,
                 modifier = Modifier.weight(1f),
             ) {
                 Icon(Icons.Filled.EmojiEvents, contentDescription = null)
@@ -92,7 +101,7 @@ fun HomeScreen(
                 Text("Progresso")
             }
             OutlinedButton(
-                onClick = onOpenSettings,
+                onClick = onNavigateSettings,
                 modifier = Modifier.weight(1f),
             ) {
                 Icon(Icons.Filled.Settings, contentDescription = null)
