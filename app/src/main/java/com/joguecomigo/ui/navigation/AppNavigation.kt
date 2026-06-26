@@ -9,17 +9,18 @@ import com.joguecomigo.ui.screens.HomeScreen
 import com.joguecomigo.ui.screens.ProgressScreen
 import com.joguecomigo.ui.screens.SettingsScreen
 import com.joguecomigo.ui.screens.SudokuScreen
+import com.joguecomigo.ui.screens.TicTacToeScreen
 
 /** Rotas de navegação do aplicativo. */
 object Routes {
-    const val HOME = "home"
-    const val SUDOKU = "sudoku"
-    const val CHECKERS = "checkers"
-    const val PROGRESS = "progress"
-    const val SETTINGS = "settings"
+    const val HOME       = "home"
+    const val SUDOKU     = "sudoku"
+    const val CHECKERS   = "checkers"
+    const val TICTACTOE  = "tictactoe"
+    const val PROGRESS   = "progress"
+    const val SETTINGS   = "settings"
 }
 
-/** Grafo de navegação principal do "Jogue Comigo". */
 @Composable
 fun AppNavigation() {
     val navController = rememberNavController()
@@ -27,10 +28,11 @@ fun AppNavigation() {
     NavHost(navController = navController, startDestination = Routes.HOME) {
         composable(Routes.HOME) {
             HomeScreen(
-                onPlaySudoku = { navController.navigate(Routes.SUDOKU) },
-                onPlayCheckers = { navController.navigate(Routes.CHECKERS) },
-                onOpenProgress = { navController.navigate(Routes.PROGRESS) },
-                onOpenSettings = { navController.navigate(Routes.SETTINGS) },
+                onNavigateSudoku    = { navController.navigate(Routes.SUDOKU) },
+                onNavigateCheckers  = { navController.navigate(Routes.CHECKERS) },
+                onNavigateTicTacToe = { navController.navigate(Routes.TICTACTOE) },
+                onNavigateProgress  = { navController.navigate(Routes.PROGRESS) },
+                onNavigateSettings  = { navController.navigate(Routes.SETTINGS) },
             )
         }
         composable(Routes.SUDOKU) {
@@ -38,6 +40,9 @@ fun AppNavigation() {
         }
         composable(Routes.CHECKERS) {
             CheckersScreen(onBack = { navController.popBackStack() })
+        }
+        composable(Routes.TICTACTOE) {
+            TicTacToeScreen(onBack = { navController.popBackStack() })
         }
         composable(Routes.PROGRESS) {
             ProgressScreen(onBack = { navController.popBackStack() })
